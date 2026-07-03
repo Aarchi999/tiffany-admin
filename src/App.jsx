@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserRoleProvider } from "./context/userRoleContext";
-import "./app.css"
+import "./App.css";
 
 import Login from "./pages/Login";
 import routes from "./constants/routesConstants";
