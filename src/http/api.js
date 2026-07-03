@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://tiffany-backend-570r.onrender.com/",
+  baseURL: "https://tiffany-backend-570r.onrender.com",
 
   headers: {
     "Content-type": "application/json",
