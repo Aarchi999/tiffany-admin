@@ -1,14 +1,12 @@
 import axios from "axios";
 
 const API = axios.create({
-  //  baseURL: "http://127.0.0.1:8000/api/",
-  //  baseURL: "https://tiffanyback.thewebsdeveloper.com/",               
-  
+  baseURL: "https://tiffany-backend-570r.onrender.com/",
 
   headers: {
-    "Content-type": "application/json"
+    "Content-type": "application/json",
   },
-});     
+});
 
 // ✅ attach token automatically
 API.interceptors.request.use(
