@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.campaign-participent-list {
+  max-height: 700px;
+  position: relative;
+  overflow: hidden;
+}
+
+.campaign-participent-item {
+  color: #fff;
+  padding: 15px;
+  background-color: #111C43;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.campaign-participent-item.active {
+  background-color: #FFBC00;
+  color: #111C43;
+}
+
+.campaign-participent-name {
+  font-size: 16px;
+}
+
+.campaign-participent-coupon-number {
+  font-size: 14px;
+}
+
+.campaign-btn {
+  display: block;
+  border: none;
+  width: 100%;
+  margin-top: 15px;
+  padding: 20px;
+  font-size: 14px;
+  color: #333333;
+  font-weight: 700;
+  background-color: #FFBC00;
+  border-radius: 8px;
+}
+.campaign-btn2 {
+  display: block;
+  border: none;
+  width: 100%;
+  margin-top: 15px;
+  padding: 20px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+  background-color: red;
+  border-radius: 8px;
+}
+
+.campaign-winners table {
+  border: 1px solid #111C43;
+}
+
+.campaign-winners table thead th {
+  background-color: #111C43;
+  color: #fff;
+  padding: 15px;
+}
+
+[lang="ar"] {
+  font-family: "Amiri", serif; /* Use Amiri for Arabic text */
+}
