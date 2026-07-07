@@ -87,7 +87,7 @@ const CampaigningSpin = () => {
         // const { id } = useParams(); // campaign id from URL
         // console.log("Campaign ID from params:", id); // debug
 
-        const response = await API.post("participants-list", {
+        const response = await API.post("participants-list", {             
           campaign_id: id,
           page: currentPage,
         });
@@ -244,9 +244,12 @@ const CampaigningSpin = () => {
 
               if (response2?.status === 200) {
                 toast.success("Winner selected successfully!");
-                setTimeout(() => {
-                  window.location.reload();
-                }, 1500);
+                await getWinnersList();
+  await fetchList();
+
+  setIsPlaying(false);
+
+
               } else {
                 toast.error(response2?.message || "Failed to pick winner.");
               }
