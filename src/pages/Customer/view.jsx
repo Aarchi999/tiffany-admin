@@ -144,7 +144,7 @@ const CustomerView = () => {
                                   file.match(/\.(jpg|jpeg|png|gif)$/i) ? (
                                     <img
                                       key={index}
-                                      src={`https://tiffanyback.thewebsdeveloper.com/uploads/invoices/${file}`}
+                                      src={`https://tiffany-backend-570r.onrender.com/uploads/invoices/${file}`}
                                       alt={`Invoice ${invoice.invoice_id}`}
                                       style={{
                                         width: "90px",
@@ -156,7 +156,7 @@ const CustomerView = () => {
                                         marginRight: "5px",
                                       }}
                                       onClick={() =>
-                                        setPreviewImg(`https://tiffanyback.thewebsdeveloper.com/uploads/invoices/${file}`)
+                                        setPreviewImg(`https://tiffany-backend-570r.onrender.com/uploads/invoices/${file}`)
                                       }
                                     />
                                   ) : file.match(/\.pdf$/i) ? (
@@ -165,7 +165,7 @@ const CustomerView = () => {
                                       className="badge bg-danger"
                                       style={{ cursor: "pointer", marginRight: "5px" }}
                                       onClick={() =>
-                                        setPreviewImg(`https://tiffanyback.thewebsdeveloper.com/uploads/invoices/${file}`)
+                                        setPreviewImg(`https://tiffany-backend-570r.onrender.com/uploads/invoices/${file}`)
                                       }
                                     >
                                       📄 View PDF
