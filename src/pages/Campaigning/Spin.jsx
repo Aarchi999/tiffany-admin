@@ -221,7 +221,16 @@ const targetCouponId = response?.data?.coupon_id;
         items.forEach((item) => {
           const couponId = parseInt(item.getAttribute("data-coupon-id"), 10);
 
+           console.log(
+    "Coupon in List:",
+    couponId,
+    "Selected Winner:",
+    targetCouponId
+  );
+
+
           if (couponId === targetCouponId) {
+            console.log("MATCH FOUND");
             item.classList.add("active");
 
             const container = document.querySelector(
@@ -241,14 +250,16 @@ const targetCouponId = response?.data?.coupon_id;
               duration: 1,
               ease: "power2.out",
             });
-
+console.log("Starting 5 second timer...");
             setTimeout(async () => {
-              console.log("===== Calling pickWinner API =====");
+               console.log("Timer Finished");
+              console.log("Calling Pick Winner API");
               console.log("Sending coupon id:", targetCouponId);
               const response2 = await API.post(`pick-winner`, {
                 campaign_id: id,
                 coupon_id: targetCouponId,
               });
+                console.log(response2);
               console.log("pickWinner Response:", response2);
 
               setIsWinnerReady(false);
