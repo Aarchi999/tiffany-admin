@@ -205,6 +205,8 @@ const response = await API.post("select-winner", {
 });
 
 console.log("selectWinner Response:", response);
+      console.log("Coupon ID =", response?.coupon_id);
+console.log("Coupon ID Data =", response?.data?.coupon_id);
       if (response?.status === 200) {
         setIsPlaying(false);
         animationRef.current?.pause();
@@ -212,8 +214,8 @@ console.log("selectWinner Response:", response);
         setIsWinnerReady(true);
 
         // const targetCouponId = response?.[0]?.coupon_id || response?.[0]?.couponId;
-        const targetCouponId = response?.coupon_id;
-
+const targetCouponId = response?.data?.coupon_id;
+        
         const items = document.querySelectorAll(".campaign-participent-item");
 
         items.forEach((item) => {
@@ -242,11 +244,12 @@ console.log("selectWinner Response:", response);
 
             setTimeout(async () => {
               console.log("===== Calling pickWinner API =====");
+              console.log("Sending coupon id:", targetCouponId);
               const response2 = await API.post(`pick-winner`, {
                 campaign_id: id,
                 coupon_id: targetCouponId,
               });
-              console.log("pickWinner Response:", result);
+              console.log("pickWinner Response:", response2);
 
               setIsWinnerReady(false);
 
