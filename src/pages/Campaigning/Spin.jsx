@@ -198,7 +198,13 @@ const CampaigningSpin = () => {
   const handleStop = async () => {
     try {
       setLoading(true);
-      const response = await API.post(`select-winner`, { campaign_id: id });
+     console.log("===== Calling selectWinner API =====");
+
+const response = await API.post("select-winner", {
+    campaign_id: id,
+});
+
+console.log("selectWinner Response:", response);
       if (response?.status === 200) {
         setIsPlaying(false);
         animationRef.current?.pause();
@@ -235,10 +241,12 @@ const CampaigningSpin = () => {
             });
 
             setTimeout(async () => {
+              console.log("===== Calling pickWinner API =====");
               const response2 = await API.post(`pick-winner`, {
                 campaign_id: id,
                 coupon_id: targetCouponId,
               });
+              console.log("pickWinner Response:", result);
 
               setIsWinnerReady(false);
 
