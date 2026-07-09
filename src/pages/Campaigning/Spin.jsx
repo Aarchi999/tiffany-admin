@@ -211,7 +211,7 @@ const CampaigningSpin = () => {
         const targetCouponId = response?.coupon_id;
         console.log("Target Coupon =", targetCouponId);
 
-        const items = document.querySelectorAll(". campaign-participent-item");                                
+        const items = document.querySelectorAll(".campaign-participent-item");                                
 
         items.forEach((item) => {
           const couponId = parseInt(item.getAttribute("data-coupon-id"), 10);
