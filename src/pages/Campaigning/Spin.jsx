@@ -197,8 +197,9 @@ const CampaigningSpin = () => {
 
   const handleStop = async () => {
     console.log("Animation Finished");
-    console.log("Calling pickWinner API");
     try {
+          console.log("Calling pickWinner API");
+
       setLoading(true);
       const response = await API.post(`select-winner`, 
         { campaign_id: id });
@@ -230,7 +231,7 @@ const CampaigningSpin = () => {
             const offset =
               itemRect.top -
               containerRect.top -
-              containerRect.height / 2 +
+              containerRect.height / 2 + 
               itemRect.height / 2;
 
             gsap.to(container, {
