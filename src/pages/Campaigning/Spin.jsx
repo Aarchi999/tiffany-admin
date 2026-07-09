@@ -197,6 +197,7 @@ const CampaigningSpin = () => {
 
   const handleStop = async () => {
     console.log("Animation Finished");
+    console.log("Calling pickWinner API");
     try {
       setLoading(true);
       const response = await API.post(`select-winner`, 
