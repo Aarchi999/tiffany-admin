@@ -87,7 +87,7 @@ const CampaigningSpin = () => {
         // const { id } = useParams(); // campaign id from URL
         // console.log("Campaign ID from params:", id); // debug
 
-        const response = await API.post("participants-list", {             
+        const response = await API.post("participants-list", {
           campaign_id: id,
           page: currentPage,
         });
@@ -118,7 +118,7 @@ const CampaigningSpin = () => {
     try {
       setLoading(true);
 
-      const response = await API.post("winner-list", {
+      const response = await API.post("winner-list", { 
         campaign_id: id,
       });
 
@@ -136,18 +136,18 @@ const CampaigningSpin = () => {
   };
 
   const getCampaignDetails = async () => {
-  try {
-    const response = await API.get(`campaign-view/${id}`);
-    
-    console.log("Campaign Data:", response.data); 
+    try {
+      const response = await API.get(`campaign-view/${id}`);
 
-    if (response?.status === 200) {
-      setCampaignStatus(response.data?.data?.status || "active");
+      console.log("Campaign Data:", response.data);
+
+      if (response?.status === 200) {
+        setCampaignStatus(response.data?.data?.status || "active");
+      }
+    } catch (err) {
+      console.log(err);
     }
-  } catch (err) {
-    console.log(err);
-  }
-};
+  };
 
 
   const verticalLoop = (elements, speed) => {
@@ -198,15 +198,9 @@ const CampaigningSpin = () => {
   const handleStop = async () => {
     try {
       setLoading(true);
-     console.log("===== Calling selectWinner API =====");
-
-const response = await API.post("select-winner", {
-    campaign_id: id,
-});
-
-console.log("selectWinner Response:", response);
-      console.log("Coupon ID =", response?.coupon_id);
-console.log("Coupon ID Data =", response?.data?.coupon_id);
+      const response = await API.post(`select-winner`, 
+        { campaign_id: id });
+        console.log("Full Response =", response);
       if (response?.status === 200) {
         setIsPlaying(false);
         animationRef.current?.pause();
@@ -214,23 +208,14 @@ console.log("Coupon ID Data =", response?.data?.coupon_id);
         setIsWinnerReady(true);
 
         // const targetCouponId = response?.[0]?.coupon_id || response?.[0]?.couponId;
-const targetCouponId = response?.data?.coupon_id;
-        
-        const items = document.querySelectorAll(".campaign-participent-item");
+        const targetCouponId = response?.coupon_id;
+
+        const items = document.querySelectorAll(". campaign-participent-item");                                
 
         items.forEach((item) => {
           const couponId = parseInt(item.getAttribute("data-coupon-id"), 10);
 
-           console.log(
-    "Coupon in List:",
-    couponId,
-    "Selected Winner:",
-    targetCouponId
-  );
-
-
           if (couponId === targetCouponId) {
-            console.log("MATCH FOUND");
             item.classList.add("active");
 
             const container = document.querySelector(
@@ -250,26 +235,22 @@ const targetCouponId = response?.data?.coupon_id;
               duration: 1,
               ease: "power2.out",
             });
-console.log("Starting 5 second timer...");
+
             setTimeout(async () => {
-               console.log("Timer Finished");
-              console.log("Calling Pick Winner API");
-              console.log("Sending coupon id:", targetCouponId);
               const response2 = await API.post(`pick-winner`, {
                 campaign_id: id,
                 coupon_id: targetCouponId,
               });
-                console.log(response2);
-              console.log("pickWinner Response:", response2);
 
               setIsWinnerReady(false);
 
               if (response2?.status === 200) {
                 toast.success("Winner selected successfully!");
-                await getWinnersList();
-  await fetchList();
+                
+                await getWinnersList();  
+                await fetchList();
 
-  setIsPlaying(false);
+                setIsPlaying(false);
 
 
               } else {
@@ -309,11 +290,11 @@ console.log("Starting 5 second timer...");
     }, 5000);
   };
 
-  const handleClose = async () => {
+  const handleClose = async () => {   
     try {
       setLoading(true);
 
-      const response = await API.post("close-campaign", {
+      const response = await API.post("close-campaign", {              
         campaign_id: id,
       });
 
