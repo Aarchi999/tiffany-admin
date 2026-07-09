@@ -209,6 +209,7 @@ const CampaigningSpin = () => {
 
         // const targetCouponId = response?.[0]?.coupon_id || response?.[0]?.couponId;
         const targetCouponId = response?.coupon_id;
+        console.log("Target Coupon =", targetCouponId);
 
         const items = document.querySelectorAll(". campaign-participent-item");                                
 
